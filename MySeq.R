@@ -1,3 +1,5 @@
+# Script (R, using base only) to build values in the sequence defined in A248651
+
 digits <- c(0:9) #vector of the digits
 digitCounts <- rep(0L,10) #vector for digit count tracking
 A <- c() #vector of entries
@@ -17,6 +19,9 @@ digits <- function(x) {
   }
 }
 
+# Engine for testing digits, runs VERY SLOW, but checks every integer. 
+# I welcome improvements, note that it respects incrementing more than one digit at a time if that makes sense.
+
 while (length(A) < 101) {
   i <- max(failed, max(A)) + 1
   newCounts <- digitCounts
@@ -31,21 +36,4 @@ while (length(A) < 101) {
         digitCounts <- newCounts
         A <- c(A,as.integer(i))
       }
-    
 }
-# 
-# for (i > max(A)){
-#   newCounts <- digitCounts
-#   digitList <- digits(i)
-#   for {j in digitList}(
-#     newCounts[j + 1] + 1
-#     if max(newCounts) - min(newCounts) > 1 {
-#       exit } else {
-#         digitCounts <-newCounts
-#         A <- c(A,i)
-#       }
-#     
-#   )
-#   
-# }
-# 
